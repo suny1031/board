@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <button id="writerBnt"><a href="/upload">글쓰기</a></button>
+    <button id="writerFormBnt"><a href="/upload">글쓰기</a></button>
     <div id="listForm" class="form">
         <table border="1">
             <th>번호</th>

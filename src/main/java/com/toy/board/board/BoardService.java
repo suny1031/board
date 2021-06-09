@@ -6,6 +6,17 @@ public interface BoardService {
 
 
     public List<Board> selectBoardList();
+
     public void insertBoard(Board board);
-    public Board selectByBorad(String brdIdx);
+
+    public Board selectByBoard(String brdIdx);
+
+    public void UpdateBoard(Board board);
+
+    public void UpdateBoardDelete(String brdIdx);
+
+    public List<BoardCmt> selectBoardCmtList(String brdIdx);
+
+
+
 }

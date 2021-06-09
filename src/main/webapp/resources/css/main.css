@@ -1,12 +1,31 @@
-a { text-decoration: none; color: black; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:focus { text-decoration: none; }
-a:hover, a:active { text-decoration: none; }
+a {
+    text-decoration: none;
+    color: black;
+}
 
-.wrapper{
-    width: 100vw;
-    height: 100vh;
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+}
+
+td > input {
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,33 +33,62 @@ a:hover, a:active { text-decoration: none; }
 }
 
 
-.form{
+.form {
     width: 70%;
-    height: 70%;
-    background-color: #ecece2;
-}
-
-#uploadForm{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-#listForm{
-    display: flex;
-    flex-direction: column;
-
-}
-
-#uploadForm > label{
+#uploadForm > label {
     margin-bottom: 10px;
 }
 
-#writerBnt{
+
+#writerFormBnt {
     position: relative;
-    left: 30%;
-    width: 100px;
-    height: 30px;
+    left: 33.4%;
+    margin-bottom: 10px;
+}
+
+#detailBtn {
+    width: 70%;
+    display: flex;
+    justify-content: start;
+    margin: 10px 0 0 0;
+
+}
+
+#detailBtn > button {
+    margin-right: 5px;
+
+}
+
+#modifyBtn {
+    width: 5%;
+    margin: 10px 0 0 0;
+
+}
+
+#writerBnt {
+    width: 5%;
+    margin: 10px 0 0 0;
+}
+
+#cmtWriterForm {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 50px 0 50px 0;
+}
+
+#cmtWriter {
+    display: flex;
+    height: 100px;
+}
+#cmtWrapper{
+    width: 70%;
+}
+#cmtBox {
+    border-bottom: 1px solid;
     margin-bottom: 10px;
 }

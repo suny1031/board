@@ -7,11 +7,18 @@
 <body>
 <div class="wrapper">
     <form id="uploadForm" class="form" action="/uploadimpl" method="post">
-        <label>제목 : <input style="width: 800px" type="text" name = "title"></label>
-        <label>내용 : <textarea name = "content" required="required" rows="20" cols="100"></textarea></label>
-        <button type="submit">작성</button>
+        <table border="1">
+            <tr>
+                <th>제목</th>
+                <td><input name="title" type="text"></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><textarea name="content" required="required" style="width: 100%"  rows="20" cols="100" ></textarea></td>
+            </tr>
+        </table>
+        <button id ="writerBnt" type="submit">작성</button>
     </form>
 </div>
-
 </body>
 </html>

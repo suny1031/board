@@ -12,6 +12,7 @@ public class BoardServiceimpl implements BoardService{
 
 
     private final BoardRepository boardRepository;
+    private final BoardCmtRepository boardCmtRepository;
 
     @Override
     public List<Board> selectBoardList() {
@@ -24,8 +25,23 @@ public class BoardServiceimpl implements BoardService{
     }
 
     @Override
-    public Board selectByBorad(String brdIdx) {
-        return boardRepository.selectByBorad(brdIdx);
+    public Board selectByBoard(String brdIdx) {
+        return boardRepository.selectByBoard(brdIdx);
+    }
+
+    @Override
+    public void UpdateBoard(Board board) {
+       boardRepository.UpdateBoard(board);
+    }
+
+    @Override
+    public void UpdateBoardDelete(String brdIdx) {
+        boardRepository.UpdateBoardDelete(brdIdx);
+    }
+
+    @Override
+    public List<BoardCmt> selectBoardCmtList(String brdIdx) {
+        return boardCmtRepository.selectBoardCmtList(brdIdx);
     }
 
 
