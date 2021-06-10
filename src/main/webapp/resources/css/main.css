@@ -25,7 +25,7 @@ td > input {
 
 .wrapper {
     width: 100%;
-    min-height: 100vh;
+    min-height: 150vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,14 +81,30 @@ td > input {
     margin: 50px 0 50px 0;
 }
 
-#cmtWriter {
+#cmtWriterBox {
     display: flex;
     height: 100px;
 }
+
+#cmtWriter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 10%;
+}
+
 #cmtWrapper{
     width: 70%;
 }
-#cmtBox {
+
+.box {
     border-bottom: 1px solid;
     margin-bottom: 10px;
+}
+#cmtContent{
+    width: 90%;
+}
+#cmtWriterBtn{
+    width: 10%;
 }

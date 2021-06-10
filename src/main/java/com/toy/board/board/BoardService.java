@@ -1,5 +1,7 @@
 package com.toy.board.board;
 
+import org.apache.ibatis.annotations.Update;
+
 import java.util.List;
 
 public interface BoardService {
@@ -11,12 +13,19 @@ public interface BoardService {
 
     public Board selectByBoard(String brdIdx);
 
-    public void UpdateBoard(Board board);
+    public void updateBoard(Board board);
 
-    public void UpdateBoardDelete(String brdIdx);
+    public void updateBoardDelete(String brdIdx);
 
     public List<BoardCmt> selectBoardCmtList(String brdIdx);
 
+    public void insertBoardCmt(BoardCmt boardCmt);
+
+    public void updateBoardCmtDelete(BoardCmt boardCmt);
+
+    public void updateBoardCmtModify(BoardCmt boardCmt);
+
+    public void insertBoardRCmt(BoardCmt boardCmt);
 
 
 }
