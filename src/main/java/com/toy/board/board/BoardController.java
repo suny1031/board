@@ -82,7 +82,6 @@ public class BoardController {
     public String cmtDelete(@RequestBody BoardCmt boardCmt, Model model) {
         boardService.updateBoardCmtDelete(boardCmt);
         return "success";
-
     }
 
     @PostMapping("cmtmodify")

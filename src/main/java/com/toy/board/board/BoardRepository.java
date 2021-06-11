@@ -11,7 +11,6 @@ import java.util.List;
 @Mapper
 public interface BoardRepository {
 
-    @Select("select * from board.board where is_del = 0 order by brd_idx desc")
     public List<Board> selectBoardList();
 
     @Insert("insert into board.board(brd_idx,title,content,writer) values(NEXTVAL(sc_brd_idx),#{title},#{content},'Guest')")
