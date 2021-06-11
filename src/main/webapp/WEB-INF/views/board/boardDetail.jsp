@@ -51,7 +51,7 @@
                 <span>
                     <a id="RcmtWriterBtn" onclick="RcmtWriter(${brdCmt.cmtIdx})" style="color: green">[답글]</a>
                     <a id="cmtModifyBtn" onclick="cmtModify(${brdCmt.cmtIdx})" style="color: blue">수정</a>
-                    <a id="cmtDeleteBtn" onclick="cmtDelete(${brdCmt.cmtIdx},${brdCmt.cmtGrp},${brdCmt.cmtSeq})"style="color: red">삭제</a>
+                    <a id="cmtDeleteBtn" onclick="cmtDelete(${brdCmt.cmtIdx},${brdCmt.cmtGrp},${brdCmt.cmtLvl})"style="color: red">삭제</a>
                 </span>
                 <p><b>내용</b> : ${brdCmt.cmtContent}</p>
             </div>
@@ -124,9 +124,7 @@
 
 </script>
 <script>
-    let cmtDelete = (cmtIdx, cmtGrp, cmtSeq) => {
-        console.log("1")
-        console.log(cmtSeq)
+    let cmtDelete = (cmtIdx, cmtGrp, cmtLvl) => {
 
         if (confirm('정말 삭제하시겠습니까?')) {
 
@@ -136,7 +134,7 @@
             let paramObj = new Object();
             paramObj.cmtIdx = cmtIdx;
             paramObj.cmtGrp = cmtGrp;
-            paramObj.cmtSeq = cmtSeq;
+            paramObj.cmtLvl = cmtLvl;
 
 
             let headerObj = new Headers();
@@ -163,45 +161,7 @@
 
     }
 </script>
-<script>
-    let cmtDelete2 = (cmtIdx, cmtGrp, cmtSeq) => {
-        console.log("2")
-        console.log(cmtSeq)
-        if (confirm('정말 삭제하시겠습니까?')) {
 
-            let brdIdx = document.querySelector("#brdIdx").value;
-
-            const url = '/cmtdelete2';
-            let paramObj = new Object();
-            paramObj.cmtIdx = cmtIdx;
-            paramObj.cmtGrp = cmtGrp;
-            paramObj.cmtSeq = cmtSeq;
-
-
-            let headerObj = new Headers();
-            headerObj.append("content-type", "application/json");
-            fetch(url, {
-                method: "post",
-                headers: headerObj,
-                body: JSON.stringify(paramObj)
-            }).then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new AsyncPageError(response.text());
-            }).then((text) => {
-                if (text == 'success') {
-                    alert("댓글 삭제가 완료되었습니다.")
-                    location.href = "/detail?brdIdx=" + brdIdx;
-                } else {
-                }
-            }).catch(error => {
-                error.alertMessage();
-            });
-        }
-
-    }
-</script>
 <script>
     let RcmtWriter = (cmtIdx) => {
         document.querySelector('#RcmtWriterBox' + cmtIdx).style.display = "block";

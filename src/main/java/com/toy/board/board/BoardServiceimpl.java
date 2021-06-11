@@ -61,9 +61,9 @@ public class BoardServiceimpl implements BoardService {
 
     @Override
     public void insertBoardRCmt(BoardCmt boardCmt) {
+        boardCmtRepository.updateBoardCmt(boardCmt);
+
         boardCmtRepository.insertBoardRCmt(boardCmt);
-
-
     }
 
 

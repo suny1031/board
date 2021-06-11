@@ -16,60 +16,60 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/list")
-    public String list(Model model){
-        model.addAttribute("brdList",boardService.selectBoardList());
+    public String list(Model model) {
+        model.addAttribute("brdList", boardService.selectBoardList());
         return "board/boardList";
     }
 
     @GetMapping("/upload")
-    public String upload(){
+    public String upload() {
         return "board/boardUpload";
     }
 
     @PostMapping("/uploadimpl")
-    public String uploadImpl(Board board,Model model){
+    public String uploadImpl(Board board, Model model) {
         System.out.println(board.toString());
         boardService.insertBoard(board);
 
-        model.addAttribute("alertMsg","게시물 등록에 성공하였습니다");
-        model.addAttribute("url","/list");
+        model.addAttribute("alertMsg", "게시물 등록에 성공하였습니다");
+        model.addAttribute("url", "/list");
         return "common/result";
     }
 
     @GetMapping("/detail")
-    public String detail(String brdIdx,Model model){
-        model.addAttribute("brd",boardService.selectByBoard(brdIdx));
-        model.addAttribute("brdCmtList",boardService.selectBoardCmtList(brdIdx));
+    public String detail(String brdIdx, Model model) {
+        model.addAttribute("brd", boardService.selectByBoard(brdIdx));
+        model.addAttribute("brdCmtList", boardService.selectBoardCmtList(brdIdx));
         return "board/boardDetail";
     }
 
-    @GetMapping ("/modify")
-    public String modify(String brdIdx, Model model){
-        model.addAttribute("brd",boardService.selectByBoard(brdIdx));
+    @GetMapping("/modify")
+    public String modify(String brdIdx, Model model) {
+        model.addAttribute("brd", boardService.selectByBoard(brdIdx));
         return "board/boardModify";
     }
 
     @PostMapping("modifyimpl")
-    public String modifyImpl(Board board, Model model){
+    public String modifyImpl(Board board, Model model) {
         boardService.updateBoard(board);
 
-        model.addAttribute("alertMsg","게시물 수정에 성공하였습니다");
-        model.addAttribute("url","/detail?brdIdx="+board.getBrdIdx());
+        model.addAttribute("alertMsg", "게시물 수정에 성공하였습니다");
+        model.addAttribute("url", "/detail?brdIdx=" + board.getBrdIdx());
         return "common/result";
     }
 
     @GetMapping("delete")
-    public String delete(String brdIdx, Model model){
+    public String delete(String brdIdx, Model model) {
         boardService.updateBoardDelete(brdIdx);
 
-        model.addAttribute("alertMsg","게시물 삭제 성공하였습니다");
-        model.addAttribute("url","/list");
+        model.addAttribute("alertMsg", "게시물 삭제 성공하였습니다");
+        model.addAttribute("url", "/list");
         return "common/result";
     }
 
     @PostMapping("cmtuploadimpl")
     @ResponseBody
-    public String cmtUpload(@RequestBody BoardCmt boardCmt, Model model){
+    public String cmtUpload(@RequestBody BoardCmt boardCmt, Model model) {
 
         boardService.insertBoardCmt(boardCmt);
 
@@ -79,26 +79,26 @@ public class BoardController {
 
     @PostMapping("cmtdelete")
     @ResponseBody
-    public String cmtDelete(@RequestBody BoardCmt boardCmt, Model model){
+    public String cmtDelete(@RequestBody BoardCmt boardCmt, Model model) {
         boardService.updateBoardCmtDelete(boardCmt);
         return "success";
 
     }
 
     @PostMapping("cmtmodify")
-    public String cmtModify(BoardCmt boardCmt, Model model){
+    public String cmtModify(BoardCmt boardCmt, Model model) {
 
         boardService.updateBoardCmtModify(boardCmt);
 
-        model.addAttribute("url","/detail?brdIdx="+boardCmt.getBrdIdx());
+        model.addAttribute("url", "/detail?brdIdx=" + boardCmt.getBrdIdx());
         return "common/result";
     }
 
     @PostMapping("rcmtupload")
-    public String RcmtUpload(BoardCmt boardCmt, Model model){
+    public String RcmtUpload(BoardCmt boardCmt, Model model) {
         boardService.insertBoardRCmt(boardCmt);
 
-        model.addAttribute("url","/detail?brdIdx="+boardCmt.getBrdIdx());
+        model.addAttribute("url", "/detail?brdIdx=" + boardCmt.getBrdIdx());
         return "common/result";
     }
 }

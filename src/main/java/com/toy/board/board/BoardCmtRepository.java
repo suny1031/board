@@ -18,7 +18,7 @@ public interface BoardCmtRepository {
             "values(#{brdIdx}, #{cmtContent}, 'Guest',(select last_insert_id()+1),'1','0' )")
     public void insertBoardCmt(BoardCmt boardCmt);
 
-    @Update("update board.board_comments set cmt_is_del = '1' where cmt_grp = #{cmtGrp} and cmt_seq > ${cmtSeq} or cmt_idx = ${cmtIdx} order by cmt_seq ")
+    @Update("update board.board_comments set cmt_is_del = '1' where cmt_grp = #{cmtGrp} and  cmt_lvl > ${cmtLvl} or cmt_idx = ${cmtIdx} order by cmt_lvl ")
     public void updateBoardCmtDelete(BoardCmt boardCmt);
 
 
@@ -34,5 +34,8 @@ public interface BoardCmtRepository {
     @Update("update board.board_comments set cmt_content =#{cmtContent} where cmt_idx = #{cmtIdx}")
     public void UpdateBoardCmtModify(BoardCmt boardCmt);
 
+
+    @Update("update board.board_comments set cmt_seq = cmt_seq+1 where cmt_grp = ${cmtGrp} and cmt_seq > ${cmtSeq}")
+    public void updateBoardCmt(BoardCmt boardCmt);
 
 }
